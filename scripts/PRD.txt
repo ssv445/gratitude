@@ -1,0 +1,84 @@
+Product Requirements Specification: Backbone Gratitude App
+
+# Overview
+A web application (PWA) to help users express gratitude towards important people in their lives.  The app will have a simple, attractive UI/UX and be accessible on various devices.
+
+# Core Features
+
+* Important People Management:
+    * What it does: Guides users in identifying their important people and allows them to add, edit, and manage a list of these individuals, including names, photos, and descriptions.
+    * Why it's important: This feature is crucial for personalizing the app experience and focusing gratitude efforts on the most meaningful relationships.
+    * How it works: A guided onboarding process will help users define their important people. Users can then add and edit information via a dedicated section in the app. Data is stored in Firebase, and the UI allows for easy searching, sorting, and categorization of contacts.  The UI will be clean and intuitive, with clear visual hierarchy.
+
+* Gratitude Tree:
+    * What it does: Allows users to plant a virtual seed for each important person. As users express gratitude, the tree grows visually.
+    * Why it's important: This feature provides a visual and gamified representation of the user's gratitude journey, making the process more engaging and rewarding.
+    * How it works: Each important person is associated with a virtual seed. Actions like expressing gratitude contribute to the tree's growth. The tree's growth stage is updated and displayed in the UI.  The visual representation of the tree will be aesthetically pleasing and provide clear feedback to the user.
+
+* Gratitude Journal:
+    * What it does: Offers a private space for users to write journal entries about people they are grateful for.
+    * Why it's important: Journaling allows for deeper reflection on gratitude.
+    * How it works: Users can create journal entries, and tag them with important people.  The journal entry interface will be simple and easy to use, with a focus on writing.
+
+* Gratitude Reminder Alerts:
+    * What it does: Sends customizable notifications to remind users to express gratitude regularly.
+    * Why it's important: Reminders help users form a consistent gratitude habit.
+    * How it works: Users can set the frequency, time, and recipients of reminders.  The reminder settings will be easy to configure.
+
+#   Data Models
+
+* User: { userId, name, email, preferences, settings }
+* ImportantPerson: { personId, userId, name, photo, description, category }
+* JournalEntry: { entryId, userId, personId, date, content }
+
+#   APIs and Integrations
+
+* RESTful API for communication between the web app and the backend.
+* Firebase Authentication.
+* Firebase Cloud Storage.
+* Firebase Cloud Messaging.
+
+#   Infrastructure Requirements
+
+* Vercel hosting.
+* Firebase project.
+* Firebase Authentication.
+* Firebase Cloud Storage.
+* Firebase Cloud Messaging.
+* Load balancing and scalability. // Handled by Vercel
+* SSL certificates for secure communication. // Handled by Vercel
+
+#   Development Roadmap
+
+* MVP Requirements:
+    * Important People Management
+    * Virtual Tree of Gratitude (basic growth stages)
+    * Gratitude Journal
+    * Gratitude Reminder Alerts
+    * Basic User profile
+    * Core backend infrastructure (Firebase)
+
+#   Logical Dependency Chain
+
+1.  Backend Foundation (Firebase):
+    * Set up Firebase project with Authentication, and Firestore.
+2.  Frontend Foundation (Next.js):
+    * Set up Next.js project with Tailwind CSS, basic UI structure, navigation, and user authentication flow (using Firebase Auth).
+3.  Important People Management & Virtual Tree (MVP):
+    * Implement the features to add/edit important people and plant virtual trees. Focus on simple tree growth and visual appeal.
+4.  Gratitude Journal (MVP):
+    * Develop the journal entry creation and display.  Focus on a clean writing experience.
+5.  Reminder Alerts (MVP):
+    * Implement the reminder notification system (Firebase).  Make the settings user-friendly.
+
+#   Risks and Mitigations
+
+* Technical Challenges:
+    * Risk:  None.
+    * Mitigation:  N/A
+* Figuring out the MVP that we can build upon:
+    * Risk:  Including too many features in the initial release, delaying launch.
+    * Mitigation:  Prioritize core features based on user value and technical feasibility. Follow an iterative development approach.
+* Resource Constraints:
+    * Risk:  Limited development resources or budget.
+    * Mitigation:  Focus on building a solid MVP with a small team. Explore open-source technologies and cost-effective solutions.
