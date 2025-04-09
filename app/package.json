@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "PORT=4000 next dev --turbopack --experimental-https -H gratitude.127.0.0.1.nip.io",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@firebase/auth": "^1.10.0",
     "@headlessui/react": "^2.2.1",
     "@heroicons/react": "^2.2.0",
+    "firebase": "^11.6.0",
     "next": "15.2.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
