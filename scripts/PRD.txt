@@ -42,11 +42,9 @@ A web application (PWA) to help users express gratitude towards important people
 
 * Vercel hosting.
 * Firebase project.
-* Firebase Authentication.
+* Firebase Authentication, only google login.
 * Firebase Cloud Storage.
 * Firebase Cloud Messaging.
-* Load balancing and scalability. // Handled by Vercel
-* SSL certificates for secure communication. // Handled by Vercel
 
 #   Development Roadmap
 
@@ -71,14 +69,6 @@ A web application (PWA) to help users express gratitude towards important people
 5.  Reminder Alerts (MVP):
     * Implement the reminder notification system (Firebase).  Make the settings user-friendly.
 
-#   Risks and Mitigations
+# Folder Structure
 
-* Technical Challenges:
-    * Risk:  None.
-    * Mitigation:  N/A
-* Figuring out the MVP that we can build upon:
-    * Risk:  Including too many features in the initial release, delaying launch.
-    * Mitigation:  Prioritize core features based on user value and technical feasibility. Follow an iterative development approach.
-* Resource Constraints:
-    * Risk:  Limited development resources or budget.
-    * Mitigation:  Focus on building a solid MVP with a small team. Explore open-source technologies and cost-effective solutions.
+1. The frontend app is in the /app folder.
