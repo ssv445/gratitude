@@ -1,0 +1,17 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow access to user's own photos directory
+    match /users/{userId}/photos/{allPaths=**} {
+      // Allow read if authenticated and owner
+      allow read: if request.auth != null && request.auth.uid == userId;
+      
+      // Allow write if authenticated, owner, and file is an image under 5MB
+      allow write: if request.auth != null 
+        && request.auth.uid == userId
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+  }
+} 

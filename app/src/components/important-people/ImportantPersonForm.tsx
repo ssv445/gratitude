@@ -61,23 +61,39 @@ export function ImportantPersonForm({ person, onSubmit, onCancel }: ImportantPer
             setIsSubmitting(true);
             setError(null);
 
-            // Convert birthdate string to Timestamp if provided
-            const birthdate = data.birthdate
+            // Convert birthdate string to Timestamp if provided and valid
+            const birthdate = data.birthdate && data.birthdate.trim() !== ''
                 ? Timestamp.fromDate(new Date(data.birthdate))
                 : undefined;
 
-            // Convert tags string to array
+            // Convert tags string to array, default to empty array if no tags
             const tags = data.tags
-                .split(',')
-                .map(tag => tag.trim())
-                .filter(tag => tag.length > 0);
+                ? data.tags
+                    .split(',')
+                    .map(tag => tag.trim())
+                    .filter(tag => tag.length > 0)
+                : [];
 
+            // Base data with required fields
             const submitData: SubmitData = {
-                ...data,
-                photoUrl,
-                birthdate,
+                name: data.name,
+                description: data.description,
+                relationship: data.relationship,
                 tags,
             };
+
+            // Add optional fields only if they have values
+            if (birthdate) {
+                submitData.birthdate = birthdate;
+            }
+
+            if (photoUrl) {
+                submitData.photoUrl = photoUrl;
+            }
+
+            if (data.reminderFrequency && data.reminderFrequency.trim() !== '') {
+                submitData.reminderFrequency = data.reminderFrequency as 'daily' | 'weekly' | 'monthly' | 'yearly';
+            }
 
             await onSubmit(submitData);
         } catch (err) {
